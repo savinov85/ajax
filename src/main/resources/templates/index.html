@@ -9,7 +9,7 @@
     $(document).ready(function () {
 alert("документ загружен");
         $.get('/ajax/user', function (data) {
-            console.log(data);
+alert("произошел запрос в базу данных")
 
             let table = "<table>" +
                 "<tr><td>" + data.id + "</td><td>" + data.enabled + "</td><td>" + data.username + "</td><td>" + data.password + "</td></tr>" +

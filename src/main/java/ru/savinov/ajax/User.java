@@ -11,13 +11,21 @@ import javax.persistence.*;
 @ToString
 @Getter
 @Setter
+@Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private Boolean enabled;
-    private String username;
-    private String password;
 
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
 }
