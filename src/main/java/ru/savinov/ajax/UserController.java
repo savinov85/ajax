@@ -2,8 +2,11 @@ package ru.savinov.ajax;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -13,8 +16,15 @@ public class UserController {
 
 
     @GetMapping("/user")
-    public User getTestUser() {
-        return userRepository.findById(1L).get();
+    public List<User> getTestUser() {
+        List<User> userList = new ArrayList<>();
+        userRepository.findAll().forEach(userList::add);
+        return userList;
     }
 
+    @PostMapping("/add_user")
+    public @ResponseBody User addUser(@RequestBody User user) {
+        userRepository.save(user);
+        return user;
+    }
 }
